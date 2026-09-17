@@ -33,8 +33,9 @@ temp/
 .DS_Store
 
 # Uploaded/generated files
-uploads/
-storage/
+storage/*
+!storage/test/
+!storage/test/**
 
 # Editor directories and files
 .vscode/*
