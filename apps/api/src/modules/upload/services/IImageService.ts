@@ -15,4 +15,6 @@ export interface IImageService {
 	compressImage(input: Buffer): Promise<Buffer>;
 
 	normalizeImage(inputPath: string, outputPath: string): Promise<any>;
+
+	isSupportedImage(ext: string): boolean;
 }

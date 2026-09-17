@@ -12,6 +12,14 @@ export const IMAGE_TYPES = new Set(["jpg", "png", "heic"]);
 class ImageService implements IImageService {
 	constructor() {}
 
+	isSupportedImage(ext: string): boolean {
+		if (!IMAGE_TYPES.has(ext)) {
+			return false;
+		}
+
+		return true;
+	}
+
 	async detectImageType(path: string): Promise<SupportedImageType | null> {
 		const type = await fileTypeFromFile(path);
 
@@ -19,7 +27,7 @@ class ImageService implements IImageService {
 			return null;
 		}
 
-		if (!IMAGE_TYPES.has(type.ext)) {
+		if (!this.isSupportedImage(type.ext)) {
 			return null;
 		}
 
