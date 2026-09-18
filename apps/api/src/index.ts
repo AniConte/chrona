@@ -1,7 +1,7 @@
-import type { IArchiveService } from "./modules/upload/services/IArchiveService.js";
-import type { IImageService } from "./modules/upload/services/IImageService.js";
-import type { IOllamaService } from "./modules/upload/services/IOllamaService.js";
-import type { IStorageService } from "./modules/upload/services/IStorageService.js";
+import type { IArchiveService } from "./modules/archive/services/IArchiveService.js";
+import type { IImageService } from "./modules/image/services/IImageService.js";
+import type { IOllamaService } from "./modules/ollama/services/IOllamaService.js";
+import type { IStorageService } from "./modules/storage/services/IStorageService.js";
 import { IDENTIFIERS } from "./shared/di/config.js";
 import container from "./shared/di/identifiers.js";
 

@@ -4,8 +4,8 @@ import { randomUUID } from "node:crypto";
 import { mkdir, rm } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { IDENTIFIERS } from "../../../shared/di/config.js";
-import type { IArchiveService } from "./IArchiveService.js";
-import type { IImageService } from "./IImageService.js";
+import type { IArchiveService } from "../../archive/services/IArchiveService.js";
+import type { IImageService } from "../../image/services/IImageService.js";
 import type { InputFile, IUploadService, UploadedImage } from "./IUploadService.js";
 
 @injectable()
