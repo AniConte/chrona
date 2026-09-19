@@ -4,6 +4,9 @@ export interface OllamaJsonRequest {
 	system?: string;
 
 	images?: Uint8Array[]; //
+
+	think?: boolean;
+	numPredict?: number;
 }
 
 export interface IOllamaService {

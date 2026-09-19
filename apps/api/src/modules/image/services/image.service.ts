@@ -65,11 +65,17 @@ class ImageService implements IImageService {
 
 	async compressImage(input: Buffer): Promise<Buffer> {
 		const attempts: { dimension: number; quality: number }[] = [
-			{ dimension: 2048, quality: 85 },
-			{ dimension: 2048, quality: 78 },
-			{ dimension: 1800, quality: 80 },
-			{ dimension: 1600, quality: 80 },
-			{ dimension: 1400, quality: 78 },
+			// { dimension: 2048, quality: 85 },
+			// { dimension: 2048, quality: 78 },
+			// { dimension: 1800, quality: 80 },
+			// { dimension: 1600, quality: 80 },
+			// { dimension: 1400, quality: 78 },
+			// 2048 -> 1538 = ~x2 pixel saving -> easier to compute using LLM
+			{ dimension: 1536, quality: 85 },
+			{ dimension: 1536, quality: 80 },
+			{ dimension: 1280, quality: 85 },
+			{ dimension: 1280, quality: 80 },
+			{ dimension: 1280, quality: 78 },
 		];
 
 		let smallest: Buffer | null = null;

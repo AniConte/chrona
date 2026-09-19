@@ -5,4 +5,6 @@ export const IDENTIFIERS = {
 	UploadService: Symbol.for("UploadService"),
 	StorageService: Symbol.for("StorageService"),
 	OllamaService: Symbol.for("OllamaService"),
+	ClassificationService: Symbol.for("ClassificationService"),
+	ExportService: Symbol.for("ExportService"),
 };

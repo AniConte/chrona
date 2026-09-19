@@ -21,28 +21,57 @@ class OllamaService implements IOllamaService {
 
 		if (request.system) {
 			messages.push({
-				role: "system" as const,
+				role: "system",
 				content: request.system,
 			});
 		}
 
 		messages.push({
-			role: "user" as const,
+			role: "user",
 			content: request.prompt,
-			...(request.images?.length ? { images: request.images } : {}),
+
+			...(request.images?.length
+				? {
+						images: request.images,
+					}
+				: {}),
 		});
 
 		const response = await this.client.chat({
-			model: OLLAMA_MODEL!,
+			model: OLLAMA_MODEL,
 			messages,
+
 			format: "json",
+
 			stream: false,
+
 			keep_alive: OLLAMA_KEEP_ALIVE,
+
+			think: request.think ?? false,
+
+			options: {
+				temperature: 0,
+				...(request.numPredict !== undefined ? { num_predict: request.numPredict } : {}),
+			},
 		});
 
 		try {
 			return JSON.parse(response.message.content) as T;
-		} catch {
+		} catch (error) {
+			console.error("[ OLLAMA ] Invalid JSON");
+
+			console.error("done_reason:", response.done_reason);
+
+			console.error("eval_count:", response.eval_count);
+
+			console.error("thinking length:", response.message.thinking?.length ?? 0);
+
+			console.error("content length:", response.message.content.length);
+
+			console.error("content:", response.message.content);
+
+			console.error("parse error:", error);
+
 			throw new Error("OLLAMA_INVALID_JSON_RESPONSE");
 		}
 	}

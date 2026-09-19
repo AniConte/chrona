@@ -34,8 +34,9 @@ temp/
 
 # Uploaded/generated files
 storage/*
-!storage/test/
-!storage/test/**
+apps/api/storage/*
+# !storage/test/
+# !storage/test/**
 
 # Editor directories and files
 .vscode/*
